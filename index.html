@@ -5,38 +5,59 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>João Gabriel | Portfólio</title>
 
-<!-- Fonte -->
-<link href="https://fonts.googleapis.com/css2?family=Arial:wght@400;700&display=swap" rel="stylesheet">
-
-<!-- EmailJS -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
 <!-- html2pdf -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
 <style>
+/* ===== RESET ===== */
+*{margin:0;padding:0;box-sizing:border-box}
+
+/* ===== BASE ===== */
 body{
-  margin:0;
   font-family:Arial, sans-serif;
   background:#0f172a;
   color:#e5e7eb;
+  scroll-behavior:smooth;
 }
 
-/* ===== SITE ===== */
+/* ===== ANIMAÇÕES ===== */
+.fade{
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeUp 1s ease forwards;
+}
+@keyframes fadeUp{
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ===== HEADER ===== */
 header{
-  background:#1e40af;
-  padding:40px;
+  background:linear-gradient(135deg,#2563eb,#1e40af);
+  padding:50px;
   text-align:center;
 }
-header h1{margin:0;font-size:2.5rem}
-section{padding:50px 10%}
-h2{color:#38bdf8}
+header h1{font-size:2.5rem}
+header p{opacity:.9}
+
+/* ===== SEÇÕES ===== */
+section{
+  padding:50px 10%;
+}
+h2{
+  color:#38bdf8;
+  margin-bottom:20px;
+}
+
+/* ===== CARDS ===== */
 .card{
   background:#020617;
   padding:20px;
   border-radius:10px;
   margin-bottom:20px;
+  animation:fadeUp 1s ease forwards;
 }
+
+/* ===== BOTÕES ===== */
 button{
   padding:12px 20px;
   background:#38bdf8;
@@ -46,6 +67,31 @@ button{
   cursor:pointer;
 }
 button:hover{background:#0ea5e9}
+
+/* ===== CURRÍCULO (PDF) ===== */
+#curriculo{
+  background:#fff;
+  color:#000;
+  padding:40px;
+  margin:40px 10%;
+}
+#curriculo h1{
+  text-align:center;
+  font-size:26px;
+  margin-bottom:15px;
+}
+#curriculo h2{
+  font-size:18px;
+  margin-top:25px;
+}
+#curriculo p,#curriculo li{
+  font-size:14px;
+  line-height:1.6;
+}
+#curriculo ul{margin-left:20px}
+hr{margin:20px 0}
+
+/* ===== FORM ===== */
 input,textarea{
   width:100%;
   padding:10px;
@@ -54,52 +100,28 @@ input,textarea{
   border:none;
 }
 
-/* ===== CURRÍCULO (PDF) ===== */
-#curriculo{
-  background:#fff;
-  color:#000;
-  padding:40px;
-}
-#curriculo h1{
+/* ===== FOOTER ===== */
+footer{
   text-align:center;
-  font-size:26px;
-  margin-bottom:10px;
-}
-#curriculo p, #curriculo li{
-  font-size:14px;
-  line-height:1.6;
-}
-#curriculo h2{
-  font-size:18px;
-  margin-top:25px;
-}
-#curriculo ul{margin-left:20px}
-hr{margin:20px 0}
-
-/* Esconder o resto no PDF */
-@media print{
-  body *{visibility:hidden}
-  #curriculo, #curriculo *{visibility:visible}
-  #curriculo{
-    position:absolute;
-    left:0;top:0;width:100%;
-  }
+  padding:20px;
+  background:#020617;
+  opacity:.7;
 }
 </style>
 </head>
 
 <body>
 
-<header>
+<header class="fade">
 <h1>João Gabriel Thuler Francisco</h1>
 <p>Desenvolvedor • Tecnologia • Administração</p>
 </header>
 
-<section>
+<section class="fade">
 <h2>🚀 Portfólio</h2>
 <div class="card">Sites profissionais em HTML, CSS e JavaScript</div>
-<div class="card">Formulários reais com EmailJS</div>
 <div class="card">Currículo automático em PDF</div>
+<div class="card">Projetos Front-End e Tecnologia</div>
 </section>
 
 <!-- ===== CURRÍCULO CLÁSSICO ===== -->
@@ -154,39 +176,26 @@ E.E. PEI Esther Maurino Rodrigues
 <button type="button" onclick="baixarPDF()">📄 Baixar currículo em PDF</button>
 </section>
 
-<section>
-<h2>📬 Contato</h2>
-<div class="card">
-<form id="formContato">
-<input type="text" name="name" placeholder="Seu nome" required>
-<input type="email" name="email" placeholder="Seu email" required>
-<textarea name="message" placeholder="Mensagem" required></textarea>
-<button type="submit">Enviar</button>
-</form>
-</div>
-</section>
+<footer>
+© 2025 • João Gabriel • Portfólio
+</footer>
 
 <script>
-(function(){
-  emailjs.init("DFx5oeV36DQ2aust2");
-})();
-
-document.getElementById("formContato").addEventListener("submit",function(e){
-e.preventDefault();
-emailjs.sendForm("service_bu6kiix","template_u590khh",this)
-.then(()=>{alert("Mensagem enviada!");this.reset();})
-.catch(()=>alert("Erro ao enviar"));
-});
-
 function baixarPDF(){
-  const el=document.getElementById("curriculo");
-  html2pdf().from(el).set({
+  const curriculo=document.getElementById("curriculo");
+  const ocultar=document.querySelectorAll("header, section:not(#curriculo), footer");
+
+  ocultar.forEach(e=>e.style.display="none");
+
+  html2pdf().from(curriculo).set({
     margin:0.5,
     filename:'curriculo-joao-gabriel.pdf',
     image:{type:'jpeg',quality:0.98},
     html2canvas:{scale:2},
     jsPDF:{unit:'in',format:'a4',orientation:'portrait'}
-  }).save();
+  }).save().then(()=>{
+    ocultar.forEach(e=>e.style.display="");
+  });
 }
 </script>
 
