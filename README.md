@@ -5,7 +5,7 @@ Bem-vindo ao meu portfólio!
 Este site foi desenvolvido para apresentar meus **conhecimentos, habilidades e projetos** na área de **tecnologia, programação e administração**.
 
 🔗 **Acesse o site:**  
-👉 https://joaogabrielthuler.github.io
+👉 [https://joaogabrielthuler.github.io](https://joao551.github.io/joaogabrielthuler.github.io/)
 
 ---
 
