@@ -2,206 +2,201 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>João Gabriel | Portfólio</title>
+<title>Portfólio | João Gabriel Thuler Francisco</title>
 
-<!-- Biblioteca PDF -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-
-body{
-  font-family:Arial, sans-serif;
-  background:#0f172a;
-  color:#e5e7eb;
+:root{
+  --primary:#1a237e;
+  --secondary:#3949ab;
+  --bg:#f4f6fb;
 }
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+body{background:var(--bg);color:#333;scroll-behavior:smooth}
 
-/* ===== ANIMAÇÕES ===== */
-.fade{
-  opacity:0;
-  transform:translateY(20px);
-  animation:fadeUp 1s ease forwards;
-}
-@keyframes fadeUp{
-  to{opacity:1;transform:translateY(0)}
-}
-
-/* ===== HEADER ===== */
+/* HEADER */
 header{
-  background:linear-gradient(135deg,#2563eb,#1e40af);
-  padding:50px;
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  color:#fff;
+  padding:40px 20px;
   text-align:center;
 }
-header h1{font-size:2.5rem}
+header .logo{
+  width:80px;height:80px;border-radius:50%;
+  background:#fff;color:var(--primary);
+  display:flex;align-items:center;justify-content:center;
+  font-size:30px;font-weight:bold;margin:0 auto 15px;
+}
+header h1{margin-bottom:5px}
+header p{opacity:.9}
 
-/* ===== SEÇÕES ===== */
-section{padding:50px 10%}
-h2{color:#38bdf8;margin-bottom:20px}
+/* SECTIONS */
+section{padding:60px 20px;max-width:1100px;margin:auto}
+section h2{text-align:center;margin-bottom:40px;font-size:28px}
 
-/* ===== CARDS ===== */
+/* SOBRE */
+#sobre p{
+  max-width:700px;
+  margin:auto;
+  text-align:center;
+  line-height:1.7;
+}
+
+/* PORTFÓLIO */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
 .card{
-  background:#020617;
-  padding:20px;
-  border-radius:10px;
-  margin-bottom:20px;
+  background:#fff;
+  padding:25px;
+  border-radius:16px;
+  box-shadow:0 10px 25px rgba(0,0,0,.1);
+  transition:.3s;
 }
+.card:hover{transform:translateY(-6px)}
+.card h3{margin-bottom:10px;color:var(--primary)}
+.card p{font-size:14px;line-height:1.6}
 
-/* ===== BOTÕES ===== */
-button{
-  padding:12px 20px;
-  background:#38bdf8;
-  border:none;
-  border-radius:6px;
-  font-weight:bold;
-  cursor:pointer;
+/* CONTATO */
+#contato{
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  color:#fff;
+  border-radius:30px;
+  padding:60px 20px;
 }
-button:hover{background:#0ea5e9}
+.form-box{
+  background:#fff;
+  max-width:420px;
+  margin:auto;
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 20px 40px rgba(0,0,0,.3);
+  color:#333;
+}
+.form-box h3{text-align:center;margin-bottom:10px}
+.form-box p{text-align:center;font-size:14px;margin-bottom:20px}
 
-/* ===== CURRÍCULO ===== */
-#curriculo{
-  background:#ffffff;
-  color:#000000;
-  padding:40px;
-  margin:40px 10%;
-}
-#curriculo h1{
-  text-align:center;
-  font-size:26px;
-  margin-bottom:15px;
-}
-#curriculo h2{
-  font-size:18px;
-  margin-top:25px;
-}
-#curriculo p,#curriculo li{
+input,textarea{
+  width:100%;
+  padding:12px;
+  margin-bottom:12px;
+  border-radius:8px;
+  border:1px solid #ccc;
   font-size:14px;
-  line-height:1.6;
 }
-#curriculo ul{margin-left:20px}
-hr{margin:20px 0}
+textarea{resize:none;height:110px}
 
-/* ===== FOOTER ===== */
+button{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  background:var(--secondary);
+  color:#fff;
+  font-size:15px;
+  cursor:pointer;
+  transition:.3s;
+}
+button:hover{background:var(--primary)}
+
+.status{text-align:center;margin-top:15px;font-size:14px}
+.success{color:green}
+.error{color:red}
+
+/* FOOTER */
 footer{
   text-align:center;
   padding:20px;
-  background:#020617;
-  opacity:.7;
+  font-size:13px;
+  color:#666;
 }
 </style>
 </head>
 
 <body>
 
-<header class="fade">
-<h1>João Gabriel Thuler Francisco</h1>
-<p>Desenvolvedor • Tecnologia • Administração</p>
+<header>
+  <div class="logo">JG</div>
+  <h1>João Gabriel Thuler Francisco</h1>
+  <p>Estudante • Programação • Tecnologia</p>
 </header>
 
-<section class="fade">
-<h2>🚀 Portfólio</h2>
-<div class="card">Sites profissionais em HTML, CSS e JavaScript</div>
-<div class="card">Currículo automático em PDF</div>
-<div class="card">Projetos Front-End e Tecnologia</div>
+<section id="sobre">
+  <h2>Sobre mim</h2>
+  <p>
+    Sou estudante do ensino médio com técnico em Administração, apaixonado
+    por tecnologia, programação, desenvolvimento de sistemas e inovação.
+    Possuo formação em Front-End, Games, PHP, Python, Java e Engenharia de Dados.
+  </p>
 </section>
 
-<!-- ===== CURRÍCULO CLÁSSICO ===== -->
-<section id="curriculo">
-<h1>JOÃO GABRIEL THULER FRANCISCO</h1>
+<section id="portfolio">
+  <h2>Portfólio</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Portfólio Web</h3>
+      <p>Site pessoal desenvolvido com HTML, CSS, JavaScript e EmailJS.</p>
+    </div>
+    <div class="card">
+      <h3>Formulário Inteligente</h3>
+      <p>Formulário com envio de email real e resposta automática.</p>
+    </div>
+    <div class="card">
+      <h3>Projetos em Programação</h3>
+      <p>Experiência com PHP, Python, Java, lógica de programação e IA.</p>
+    </div>
+  </div>
+</section>
 
-<p>
-<strong>Nascimento:</strong> 13/06/2009<br>
-<strong>Mãe:</strong> Priscila Thuler Francisco<br>
-<strong>Pai:</strong> Michel Angelo Francisco<br>
-<strong>Telefone:</strong> (15) 99671-9363 / (15) 98835-0349<br>
-<strong>Email:</strong> joaogabrielthulerfrancisco@gmail.com<br>
-<strong>Endereço:</strong> Amadeu De Lara, 148 – Porto Feliz/SP
-</p>
+<section id="contato">
+  <h2>Contato</h2>
 
-<hr>
+  <div class="form-box">
+    <h3>Envie uma mensagem</h3>
+    <p>Responderei o mais rápido possível</p>
 
-<h2>Formações</h2>
-<ul>
-<li>Windows 10 – 12h – Unicap</li>
-<li>Word 2016 – 16h – Unicap</li>
-<li>Excel 2016 – 16h – Unicap</li>
-<li>PowerPoint 2016 – 10h – Unicap</li>
-<li>Internet – 8h – Unicap</li>
-<li>Front-End, Programação e IA – Alura – 92h</li>
-<li>Lógica de Programação – Microlins</li>
-<li>Desenvolvimento de Games 2D e 3D – Microlins</li>
-<li>CorelDraw Essencial e Avançado – Microlins</li>
-<li>Marketing Digital – Microlins</li>
-<li>Programação em PHP – Microlins</li>
-<li>Java Básico – Microlins</li>
-<li>Python – Microlins</li>
-</ul>
+    <form id="contactForm">
+      <input type="text" name="name" placeholder="Seu nome" required>
+      <input type="email" name="email" placeholder="Seu email" required>
+      <textarea name="message" placeholder="Sua mensagem" required></textarea>
+      <button type="submit">Enviar mensagem</button>
+    </form>
 
-<hr>
-
-<h2>Cursando</h2>
-<p>
-2ª Série do Ensino Médio com Técnico em Administração<br>
-E.E. PEI Esther Maurino Rodrigues
-</p>
-
-<hr>
-
-<h2>Informações Adicionais</h2>
-<ul>
-<li>Eleito aluno destaque mais de 6 vezes</li>
-<li>Participante do Grêmio Estudantil (2025)</li>
-</ul>
-
-<br>
-<button type="button" onclick="baixarPDF()">📄 Baixar currículo em PDF</button>
+    <div id="status" class="status"></div>
+  </div>
 </section>
 
 <footer>
-© 2025 • João Gabriel • Portfólio
+  © 2025 • João Gabriel Thuler Francisco
 </footer>
 
 <script>
-function baixarPDF(){
+(function(){
+  emailjs.init("DFx5oeV36DQ2aust2");
+})();
 
-  const original = document.getElementById("curriculo");
+document.getElementById("contactForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const status = document.getElementById("status");
+  status.textContent = "Enviando...";
+  status.className = "status";
 
-  // CLONA o currículo
-  const clone = original.cloneNode(true);
-
-  clone.style.background = "#ffffff";
-  clone.style.color = "#000000";
-  clone.style.padding = "40px";
-  clone.style.width = "210mm";
-
-  // Container invisível
-  const container = document.createElement("div");
-  container.style.position = "fixed";
-  container.style.left = "-9999px";
-  container.appendChild(clone);
-
-  document.body.appendChild(container);
-
-  const opt = {
-    margin: 10,
-    filename: 'curriculo-joao-gabriel.pdf',
-    image: { type: 'jpeg', quality: 1 },
-    html2canvas: {
-      scale: 2,
-      backgroundColor: "#ffffff",
-      useCORS: true
-    },
-    jsPDF: {
-      unit: 'mm',
-      format: 'a4',
-      orientation: 'portrait'
-    }
-  };
-
-  html2pdf().set(opt).from(clone).save().then(() => {
-    document.body.removeChild(container);
+  emailjs.sendForm("service_bu6kiix","template_u590khh",this)
+  .then(()=>{
+    emailjs.sendForm("service_bu6kiix","template_wzmauv6",this);
+    status.textContent = "Mensagem enviada com sucesso!";
+    status.classList.add("success");
+    this.reset();
+  })
+  .catch(()=>{
+    status.textContent = "Erro ao enviar. Tente novamente.";
+    status.classList.add("error");
   });
-}
+});
 </script>
 
 </body>
