@@ -3,290 +3,201 @@
 <head>
 <meta charset="UTF-8">
 <title>Portfólio | João Gabriel Thuler Francisco</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
 <style>
-:root {
-    --primary: #1a237e;
-    --secondary: #3949ab;
-    --bg: #f4f6fb;
-    --card: #ffffff;
-    --text: #333;
-    --muted: #666;
+:root{
+  --primary:#1a237e;
+  --secondary:#3949ab;
+  --bg:#f4f6fb;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+body{background:var(--bg);color:#333;scroll-behavior:smooth}
+
+/* HEADER */
+header{
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  color:#fff;
+  padding:40px 20px;
+  text-align:center;
+}
+header .logo{
+  width:80px;height:80px;border-radius:50%;
+  background:#fff;color:var(--primary);
+  display:flex;align-items:center;justify-content:center;
+  font-size:30px;font-weight:bold;margin:0 auto 15px;
+}
+header h1{margin-bottom:5px}
+header p{opacity:.9}
+
+/* SECTIONS */
+section{padding:60px 20px;max-width:1100px;margin:auto}
+section h2{text-align:center;margin-bottom:40px;font-size:28px}
+
+/* SOBRE */
+#sobre p{
+  max-width:700px;
+  margin:auto;
+  text-align:center;
+  line-height:1.7;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* PORTFÓLIO */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
 }
+.card{
+  background:#fff;
+  padding:25px;
+  border-radius:16px;
+  box-shadow:0 10px 25px rgba(0,0,0,.1);
+  transition:.3s;
+}
+.card:hover{transform:translateY(-6px)}
+.card h3{margin-bottom:10px;color:var(--primary)}
+.card p{font-size:14px;line-height:1.6}
 
-body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background-color: var(--bg);
-    background-image:
-        radial-gradient(#dde2f1 1px, transparent 1px),
-        radial-gradient(#dde2f1 1px, transparent 1px);
-    background-size: 22px 22px;
-    background-position: 0 0, 11px 11px;
-    color: var(--text);
+/* CONTATO */
+#contato{
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  color:#fff;
+  border-radius:30px;
+  padding:60px 20px;
 }
+.form-box{
+  background:#fff;
+  max-width:420px;
+  margin:auto;
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 20px 40px rgba(0,0,0,.3);
+  color:#333;
+}
+.form-box h3{text-align:center;margin-bottom:10px}
+.form-box p{text-align:center;font-size:14px;margin-bottom:20px}
 
-/* NAV */
-nav {
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+input,textarea{
+  width:100%;
+  padding:12px;
+  margin-bottom:12px;
+  border-radius:8px;
+  border:1px solid #ccc;
+  font-size:14px;
 }
+textarea{resize:none;height:110px}
 
-nav h1 {
-    color: white;
-    font-size: 20px;
+button{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  background:var(--secondary);
+  color:#fff;
+  font-size:15px;
+  cursor:pointer;
+  transition:.3s;
 }
+button:hover{background:var(--primary)}
 
-nav a {
-    color: white;
-    margin-left: 20px;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-/* CONTAINER */
-.container {
-    max-width: 1100px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
-
-/* HERO */
-.hero {
-    background: var(--card);
-    padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 30px;
-}
-
-.hero h2 {
-    font-size: 28px;
-    color: var(--primary);
-}
-
-.hero p {
-    margin-top: 15px;
-    line-height: 1.6;
-}
-
-.hero .info p {
-    font-size: 14px;
-    margin-bottom: 6px;
-}
-
-/* SECTION */
-section {
-    margin-top: 50px;
-}
-
-section h3 {
-    font-size: 22px;
-    color: var(--primary);
-    margin-bottom: 20px;
-}
-
-/* CARDS */
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 25px;
-}
-
-.card {
-    background: var(--card);
-    padding: 25px;
-    border-radius: 14px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
-}
-
-.card h4 {
-    margin-bottom: 10px;
-    color: var(--secondary);
-}
-
-.card p {
-    font-size: 14px;
-    color: var(--muted);
-}
-
-/* TAGS */
-.tags {
-    margin-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.tag {
-    background: #e8eaf6;
-    color: var(--primary);
-    padding: 6px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-}
+.status{text-align:center;margin-top:15px;font-size:14px}
+.success{color:green}
+.error{color:red}
 
 /* FOOTER */
-footer {
-    margin-top: 60px;
-    text-align: center;
-    padding: 20px;
-    font-size: 13px;
-    color: var(--muted);
-}
-
-/* RESPONSIVE */
-@media (max-width: 900px) {
-    .hero {
-        grid-template-columns: 1fr;
-    }
+footer{
+  text-align:center;
+  padding:20px;
+  font-size:13px;
+  color:#666;
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
-<nav>
-    <h1>João Gabriel</h1>
-    <div>
-        <a href="#sobre">Sobre</a>
-        <a href="#habilidades">Habilidades</a>
-        <a href="#projetos">Projetos</a>
-        <a href="#contato">Contato</a>
+<header>
+  <div class="logo">JG</div>
+  <h1>João Gabriel Thuler Francisco</h1>
+  <p>Estudante • Programação • Tecnologia</p>
+</header>
+
+<section id="sobre">
+  <h2>Sobre mim</h2>
+  <p>
+    Sou estudante do ensino médio com técnico em Administração, apaixonado
+    por tecnologia, programação, desenvolvimento de sistemas e inovação.
+    Possuo formação em Front-End, Games, PHP, Python, Java e Engenharia de Dados.
+  </p>
+</section>
+
+<section id="portfolio">
+  <h2>Portfólio</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Portfólio Web</h3>
+      <p>Site pessoal desenvolvido com HTML, CSS, JavaScript e EmailJS.</p>
     </div>
-</nav>
+    <div class="card">
+      <h3>Formulário Inteligente</h3>
+      <p>Formulário com envio de email real e resposta automática.</p>
+    </div>
+    <div class="card">
+      <h3>Projetos em Programação</h3>
+      <p>Experiência com PHP, Python, Java, lógica de programação e IA.</p>
+    </div>
+  </div>
+</section>
 
-<div class="container">
+<section id="contato">
+  <h2>Contato</h2>
 
-    <!-- HERO / SOBRE -->
-    <section id="sobre" class="hero">
-        <div>
-            <h2>Olá, eu sou João Gabriel 👋</h2>
-            <p>
-                Sou estudante do Ensino Médio com Técnico em Administração, com forte interesse
-                em tecnologia, programação, desenvolvimento de sistemas e inovação.
-                Possuo experiência acadêmica em front-end, lógica de programação, dados,
-                games e informática.
-            </p>
-        </div>
+  <div class="form-box">
+    <h3>Envie uma mensagem</h3>
+    <p>Responderei o mais rápido possível</p>
 
-        <div class="info">
-            <p><strong>Cidade:</strong> Porto Feliz – SP</p>
-            <p><strong>Email:</strong> joaogabrielthulerfrancisco@gmail.com</p>
-            <p><strong>Telefone:</strong> (15) 99671-9363</p>
-            <p><strong>Status:</strong> Disponível para estágio / jovem aprendiz</p>
-        </div>
-    </section>
+    <form id="contactForm">
+      <input type="text" name="name" placeholder="Seu nome" required>
+      <input type="email" name="email" placeholder="Seu email" required>
+      <textarea name="message" placeholder="Sua mensagem" required></textarea>
+      <button type="submit">Enviar mensagem</button>
+    </form>
 
-    <!-- HABILIDADES -->
-    <section id="habilidades">
-        <h3>Habilidades</h3>
-        <div class="cards">
-            <div class="card">
-                <h4>Programação</h4>
-                <div class="tags">
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                    <span class="tag">PHP</span>
-                    <span class="tag">Java Básico</span>
-                    <span class="tag">Python</span>
-                </div>
-            </div>
-
-            <div class="card">
-                <h4>Ferramentas</h4>
-                <div class="tags">
-                    <span class="tag">Excel</span>
-                    <span class="tag">Word</span>
-                    <span class="tag">PowerPoint</span>
-                    <span class="tag">CorelDRAW</span>
-                </div>
-            </div>
-
-            <div class="card">
-                <h4>Outros Conhecimentos</h4>
-                <div class="tags">
-                    <span class="tag">Front-End</span>
-                    <span class="tag">Games 2D/3D</span>
-                    <span class="tag">Marketing Digital</span>
-                    <span class="tag">Robótica</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROJETOS -->
-    <section id="projetos">
-        <h3>Projetos</h3>
-        <div class="cards">
-
-            <div class="card">
-                <h4>Currículo Online</h4>
-                <p>
-                    Site desenvolvido em HTML e CSS com layout profissional,
-                    responsivo e preparado para exportação em PDF.
-                </p>
-                <div class="tags">
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                </div>
-            </div>
-
-            <div class="card">
-                <h4>Projeto Educacional</h4>
-                <p>
-                    Aplicação acadêmica focada em lógica de programação e
-                    resolução de problemas.
-                </p>
-                <div class="tags">
-                    <span class="tag">Lógica</span>
-                    <span class="tag">Programação</span>
-                </div>
-            </div>
-
-            <div class="card">
-                <h4>Projeto de Games</h4>
-                <p>
-                    Desenvolvimento de jogos 2D e 3D durante cursos técnicos,
-                    aplicando conceitos de design e programação.
-                </p>
-                <div class="tags">
-                    <span class="tag">Games</span>
-                    <span class="tag">3D</span>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- CONTATO -->
-    <section id="contato">
-        <h3>Contato</h3>
-        <div class="card">
-            <p><strong>Email:</strong> joaogabrielthulerfrancisco@gmail.com</p>
-            <p><strong>Telefone:</strong> (15) 99671-9363</p>
-            <p><strong>LinkedIn / GitHub:</strong> https://github.com/Joao551</p>
-        </div>
-    </section>
-
-</div>
+    <div id="status" class="status"></div>
+  </div>
+</section>
 
 <footer>
-    © 2025 • Portfólio desenvolvido em HTML & CSS
+  © 2025 • João Gabriel Thuler Francisco
 </footer>
+
+<script>
+(function(){
+  emailjs.init("DFx5oeV36DQ2aust2");
+})();
+
+document.getElementById("contactForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const status = document.getElementById("status");
+  status.textContent = "Enviando...";
+  status.className = "status";
+
+  emailjs.sendForm("service_bu6kiix","template_u590khh",this)
+  .then(()=>{
+    emailjs.sendForm("service_bu6kiix","template_wzmauv6",this);
+    status.textContent = "Mensagem enviada com sucesso!";
+    status.classList.add("success");
+    this.reset();
+  })
+  .catch(()=>{
+    status.textContent = "Erro ao enviar. Tente novamente.";
+    status.classList.add("error");
+  });
+});
+</script>
 
 </body>
 </html>
-
