@@ -11,7 +11,7 @@ Este site foi desenvolvido para apresentar meus **conhecimentos, habilidades e p
 
 ## 👨‍💻 Sobre mim
 
-Sou estudante da **2ª série do Ensino Médio com Técnico em Administração**, com grande interesse em **tecnologia, desenvolvimento web, programação e inovação**.
+Sou estudante da **3ª série do Ensino Médio com Técnico em Administração**, com grande interesse em **tecnologia, desenvolvimento web, programação e inovação**.
 
 Tenho experiência acadêmica em:
 - Front-End (HTML & CSS)
