@@ -30,6 +30,7 @@ Tenho experiência acadêmica em:
 
 - **HTML5**
 - **CSS3**
+- **JavaScript**
 - Design responsivo
 - Layout moderno e profissional
 - GitHub Pages para hospedagem
